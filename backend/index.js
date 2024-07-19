@@ -101,8 +101,10 @@ const readAllCategories = async () => {
   try {
     const products = await readAllProducts();
     const categories = [];
-    if (!categories[products.categories.mainCategory]) {
-      categories.push(products.categories.mainCategory);
+    for (let value of products) {
+      if (!categories.includes(value.category.mainCategory)) {
+        categories.push(value.category.mainCategory);
+      }
     }
     return categories;
   } catch (error) {
@@ -113,7 +115,7 @@ const readAllCategories = async () => {
 app.get("/api/categories", async (req, res) => {
   try {
     const categories = await readAllCategories();
-    if (categories.length > 0) {
+    if (categories) {
       res.json(categories);
     } else {
       res.status(404).json({ error: "Product not Found" });
