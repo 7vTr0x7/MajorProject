@@ -97,6 +97,32 @@ app.get("/products/:id", async (req, res) => {
   }
 });
 
+const readAllCategories = async () => {
+  try {
+    const products = await readAllProducts();
+    const categories = [];
+    if (!categories[products.categories.mainCategory]) {
+      categories.push(products.categories.mainCategory);
+    }
+    return categories;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+app.get("/api/categories", async (req, res) => {
+  try {
+    const categories = await readAllCategories();
+    if (categories.length > 0) {
+      res.json(categories);
+    } else {
+      res.status(404).json({ error: "Product not Found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: `Failed to get categories: ${error}` });
+  }
+});
+
 const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server Running on Port: ${PORT}`);
