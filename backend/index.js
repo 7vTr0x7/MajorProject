@@ -5,6 +5,7 @@ app.use(express.json());
 const { initializeDatabase } = require("./db/db.connect");
 
 const Product = require("./models/product.models");
+const Categories = require("./models/categories.models");
 
 initializeDatabase();
 
@@ -99,13 +100,7 @@ app.get("/api/products/:id", async (req, res) => {
 
 const readAllCategories = async () => {
   try {
-    const products = await readAllProducts();
-    const categories = [];
-    for (let value of products) {
-      if (!categories.includes(value.category.mainCategory)) {
-        categories.push(value.category.mainCategory);
-      }
-    }
+    const categories = await Categories.find();
     return categories;
   } catch (error) {
     console.log(error);
