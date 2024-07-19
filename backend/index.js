@@ -167,7 +167,7 @@ app.post("/api/categories", async (req, res) => {
 
 const readProductsByCategory = async (category) => {
   try {
-    const products = await Product.find({ mainCategory: category });
+    const products = await Product.find({ "category.mainCategory": category });
     return products;
   } catch (error) {
     console.log(error);
@@ -177,7 +177,7 @@ const readProductsByCategory = async (category) => {
 app.get("/api/products/product/:category", async (req, res) => {
   try {
     const products = await readProductsByCategory(req.params.category);
-    if (products) {
+    if (products.length > 0) {
       res.json(products);
     } else {
       res.status(404).json({ error: "Products not Found" });
