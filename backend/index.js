@@ -34,7 +34,7 @@ app.get("/api/products", async (req, res) => {
 const createProduct = async (prod) => {
   try {
     const newProd = new Product(prod);
-    const savedProd = newProd.save();
+    const savedProd = await newProd.save();
     return savedProd;
   } catch (error) {
     console.log(error);
@@ -139,6 +139,29 @@ app.get("/api/categories/:id", async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: `Failed to get category: ${error}` });
+  }
+});
+
+const addCategories = async (category) => {
+  try {
+    const newCategory = await Categories(category);
+    const savedCategory = await newCategory.save();
+    return savedCategory;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+app.post("/api/categories", async (req, res) => {
+  try {
+    const category = await addCategories(req.body);
+    if (category) {
+      res.json(category);
+    } else {
+      res.status(404).json({ error: "category not Found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: `Failed to create category: ${error}` });
   }
 });
 
