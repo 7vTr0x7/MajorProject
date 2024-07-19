@@ -75,6 +75,28 @@ app.delete("/products/:id", async (req, res) => {
   }
 });
 
+const readProductById = async (id) => {
+  try {
+    const product = await Product.findById(id);
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+app.get("/products/:id", async (req, res) => {
+  try {
+    const product = await readProductById(req.params.id);
+    if (product) {
+      res.json({ product: product });
+    } else {
+      res.status(404).json({ error: "Product not Found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: `Failed to get product: ${error}` });
+  }
+});
+
 const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server Running on Port: ${PORT}`);
