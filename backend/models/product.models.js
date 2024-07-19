@@ -24,8 +24,14 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   category: {
-    type: String,
-    required: true,
+    mainCategory: {
+      type: String,
+      required: true,
+    },
+    subCategory: {
+      type: String,
+      required: true,
+    },
   },
   starRating: {
     type: Number,
