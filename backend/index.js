@@ -53,6 +53,28 @@ app.post("/products", async (req, res) => {
   }
 });
 
+const deleteProduct = async (id) => {
+  try {
+    const product = await Product.findByIdAndDelete(id);
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+app.delete("/products/:id", async (req, res) => {
+  try {
+    const product = await deleteProduct(req.params.id);
+    if (product) {
+      res.json(product);
+    } else {
+      res.status(404).json({ error: "Product not Found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: `Failed to delete product: ${error}` });
+  }
+});
+
 const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server Running on Port: ${PORT}`);
