@@ -17,7 +17,7 @@ const readAllProducts = async () => {
   }
 };
 
-app.get("/products", async (req, res) => {
+app.get("/api/products", async (req, res) => {
   try {
     const products = await readAllProducts();
     if (products.length > 0) {
@@ -40,7 +40,7 @@ const createProduct = async (prod) => {
   }
 };
 
-app.post("/products", async (req, res) => {
+app.post("/api/products", async (req, res) => {
   try {
     const product = await createProduct(req.body);
     if (product) {
@@ -62,7 +62,7 @@ const deleteProduct = async (id) => {
   }
 };
 
-app.delete("/products/:id", async (req, res) => {
+app.delete("/api/products/:id", async (req, res) => {
   try {
     const product = await deleteProduct(req.params.id);
     if (product) {
@@ -84,7 +84,7 @@ const readProductById = async (id) => {
   }
 };
 
-app.get("/products/:id", async (req, res) => {
+app.get("/api/products/:id", async (req, res) => {
   try {
     const product = await readProductById(req.params.id);
     if (product) {
