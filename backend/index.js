@@ -113,10 +113,32 @@ app.get("/api/categories", async (req, res) => {
     if (categories) {
       res.json(categories);
     } else {
-      res.status(404).json({ error: "Product not Found" });
+      res.status(404).json({ error: "categories not Found" });
     }
   } catch (error) {
     res.status(500).json({ error: `Failed to get categories: ${error}` });
+  }
+});
+
+const readCategoryById = async (id) => {
+  try {
+    const categories = await Categories.findById(id);
+    return categories;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+app.get("/api/categories/:id", async (req, res) => {
+  try {
+    const category = await readCategoryById(req.params.id);
+    if (category) {
+      res.json({ category: category });
+    } else {
+      res.status(404).json({ error: "category not Found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: `Failed to get category: ${error}` });
   }
 });
 
