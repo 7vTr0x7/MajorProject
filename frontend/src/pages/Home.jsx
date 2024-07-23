@@ -16,7 +16,6 @@ const Home = () => {
       }
 
       const data = await res.json();
-      console.log(data);
       setCategories(data);
     } catch (error) {
       console.log(error);
@@ -36,9 +35,7 @@ const Home = () => {
               <div key={category._id} className="col-md-3 text-center">
                 <button
                   className="btn btn-light"
-                  onClick={() =>
-                    navigate(`/products/:/products/product/${category.name}`)
-                  }>
+                  onClick={() => navigate(`/products/${category.name}`)}>
                   {category.name}
                 </button>
               </div>
@@ -53,10 +50,18 @@ const Home = () => {
         </div>
         <div className="row py-4">
           <div className="col-md-6 text-center">
-            <button className="btn btn-light">All Products</button>
+            <button
+              className="btn btn-light"
+              onClick={() => navigate(`/products`)}>
+              All Products
+            </button>
           </div>
           <div className="col-md-6 text-center">
-            <button className="btn btn-light">Products With Discount</button>
+            <button
+              className="btn btn-light"
+              onClick={() => navigate(`/products/discount`)}>
+              Products With Discount
+            </button>
           </div>
         </div>
       </main>

@@ -11,7 +11,9 @@ const Header = () => {
           <div className="col-md-4">
             <nav className="navbar">
               <h1 className="navbar-brand">
-                <NavLink to="/">MyCart</NavLink>
+                <NavLink to="/" className="nav-link">
+                  MyCart
+                </NavLink>
               </h1>
             </nav>
           </div>
