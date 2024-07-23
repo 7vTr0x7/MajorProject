@@ -30,7 +30,7 @@ app.get("/api/products", async (req, res) => {
   try {
     const products = await readAllProducts();
     if (products.length > 0) {
-      res.json({ products: products });
+      res.json(products);
     } else {
       res.status(404).json({ error: "Products not Found" });
     }
