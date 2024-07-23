@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
+
+  const navigate = useNavigate();
 
   const fetchCategories = async () => {
     try {
@@ -31,7 +34,13 @@ const Home = () => {
           {categories.length > 0 &&
             categories.map((category) => (
               <div key={category._id} className="col-md-3 text-center">
-                <button className="btn btn-light">{category.name}</button>
+                <button
+                  className="btn btn-light"
+                  onClick={() =>
+                    navigate(`/products/:/products/product/${category.name}`)
+                  }>
+                  {category.name}
+                </button>
               </div>
             ))}
         </div>
