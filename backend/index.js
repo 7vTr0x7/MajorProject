@@ -1,5 +1,5 @@
 const express = require("express");
-
+const cors = require("cors");
 const app = express();
 app.use(express.json());
 
@@ -7,6 +7,13 @@ const { initializeDatabase } = require("./db/db.connect");
 
 const Product = require("./models/product.models");
 const Categories = require("./models/categories.models");
+
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 initializeDatabase();
 
