@@ -198,7 +198,6 @@ app.get("/api/products/product/:category", async (req, res) => {
 const readProductsByDiscount = async () => {
   try {
     const products = await Product.find({ "price.discountAvailable": true });
-    console.log(products);
     return products;
   } catch (error) {
     console.log(error);
