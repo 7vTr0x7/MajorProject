@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,7 +10,9 @@ const Header = () => {
         <div className="row">
           <div className="col-md-4">
             <nav className="navbar">
-              <h1 className="navbar-brand">MyCart</h1>
+              <h1 className="navbar-brand">
+                <NavLink to="/">MyCart</NavLink>
+              </h1>
             </nav>
           </div>
           <div className="col-md-4 pt-2">
