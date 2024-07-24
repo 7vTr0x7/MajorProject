@@ -255,8 +255,14 @@ const Products = () => {
           </div>
           <div className="col-md-9 bg-body-tertiary py-4 px-4 rounded">
             <p>
-              <b>Showing All Products</b> ( showing{" "}
-              {filteredProducts && filteredProducts.length} products )
+              {filteredProducts && filteredProducts.length > 0 ? (
+                <>
+                  <b>Showing All Products</b> ( showing{" "}
+                  {filteredProducts.length} products )
+                </>
+              ) : (
+                <b>Products Not Found</b>
+              )}
             </p>
           </div>
         </div>
