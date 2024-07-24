@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { useParams } from "react-router-dom";
+import ProductList from "../components/ProductList";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -259,6 +260,7 @@ const Products = () => {
                 <>
                   <b>Showing All Products</b> ( showing{" "}
                   {filteredProducts.length} products )
+                  <ProductList products={products} />
                 </>
               ) : (
                 <b>Products Not Found</b>

@@ -10,7 +10,7 @@ const initializeDatabase = async () => {
       console.log("Connected to MONGODB");
     }
   } catch (error) {
-    console.log("Failed to connect to MONGODB");
+    console.log("Failed to connect to MONGODB", error);
   }
 };
 
