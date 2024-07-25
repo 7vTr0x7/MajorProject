@@ -217,6 +217,28 @@ app.get("/api/products/product/discount/true", async (req, res) => {
   }
 });
 
+const updateProduct = async (id, data) => {
+  try {
+    const product = await Product.findByIdAndUpdate(id, data, { new: true });
+    return product;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+app.post("./api/products/product/:id", async (req, res) => {
+  try {
+    const product = await updateProduct(req.params.id, req, body);
+    if (product) {
+      res, json(product);
+    } else {
+      res.status(404).json({ error: "Product not Found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: `Failed to update Product: ${error}` });
+  }
+});
+
 const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Server Running on Port: ${PORT}`);
