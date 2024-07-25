@@ -12,7 +12,7 @@ const ProductList = ({ products }) => {
                   <div className="col-md-4 ">
                     <div className="text-center">
                       <img
-                        src={prod.productImageUrl}
+                        src={`${prod.productImageUrl}${prod.title}`}
                         alt={prod.title}
                         className="img-fluid"
                       />

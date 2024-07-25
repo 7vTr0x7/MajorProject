@@ -7,7 +7,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const [priceRange, setPriceRange] = useState(100);
+  const [priceRange, setPriceRange] = useState(10);
 
   const [subCategories, setSubCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -57,7 +57,7 @@ const Products = () => {
 
   const clearFiltersHandler = () => {
     setFilteredProducts(products);
-    setPriceRange(100);
+    setPriceRange(10);
     setSelectedCategories([]);
     setRating();
     setSort();
@@ -139,15 +139,15 @@ const Products = () => {
                 type="range"
                 name="min"
                 className="form-range"
-                min={100}
+                min={10}
                 step={1}
-                max={1000}
+                max={1500}
                 value={priceRange}
                 onChange={handlePriceRange}
               />
               <div className="d-flex justify-content-between">
                 <label>{priceRange}</label>
-                <label>{1000}</label>
+                <label>{1500}</label>
               </div>
             </div>
             <div className="py-3">
