@@ -7,7 +7,7 @@ const ProductList = ({ products }) => {
         {products.map((prod) => (
           <>
             <div className="col-md-6 ">
-              <div className="card  mt-2 rounded-0" style={{ height: "250px" }}>
+              <div className="card  mt-2 rounded-0">
                 <div className="row">
                   <div className="col-md-4 ">
                     <div className="text-center">

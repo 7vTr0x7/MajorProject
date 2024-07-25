@@ -228,9 +228,9 @@ const updateProduct = async (id, data) => {
 
 app.post("/api/products/product/:id", async (req, res) => {
   try {
-    const product = await updateProduct(req.params.id, req, body);
+    const product = await updateProduct(req.params.id, req.body);
     if (product) {
-      res, json(product);
+      res.json(product);
     } else {
       res.status(404).json({ error: "Product not Found" });
     }
