@@ -226,7 +226,7 @@ const updateProduct = async (id, data) => {
   }
 };
 
-app.post("./api/products/product/:id", async (req, res) => {
+app.post("/api/products/product/:id", async (req, res) => {
   try {
     const product = await updateProduct(req.params.id, req, body);
     if (product) {
